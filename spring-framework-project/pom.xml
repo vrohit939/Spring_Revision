@@ -30,6 +30,20 @@
             <version>6.2.1</version>
         </dependency>
 
+        <!-- spring-aop (For logging, transaction managements, security checks, etc) -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aop</artifactId>
+            <version>6.2.1</version>
+        </dependency>
+
+        <!-- aspectjweaver -->
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.9.22.1</version>
+        </dependency>
+
 
         <!-- mysql-connector-j -->
         <dependency>
