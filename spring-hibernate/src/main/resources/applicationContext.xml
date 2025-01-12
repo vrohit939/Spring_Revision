@@ -1,0 +1,81 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/aop
+                           http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+                           http://www.springframework.org/schema/tx
+                           http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!-- Enable annotation scanning -->
+    <context:component-scan base-package="com.example"/>
+
+    <!-- Enable transaction management -->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+    <!-- Enable AOP support -->
+    <aop:aspectj-autoproxy/>
+
+    <!-- Database Properties -->
+    <context:property-placeholder location="classpath:db.properties"/>
+
+    <!-- DataSource Bean for database connection -->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${db.driverClassName}"/>
+        <property name="url" value="${db.url}"/>
+        <property name="username" value="${db.username}"/>
+        <property name="password" value="${db.password}"/>
+    </bean>
+
+    <!-- Hibernate SessionFactory Bean -->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="packagesToScan" value="com.example.model"/>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.format_sql">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!-- Hibernate Transaction Manager Bean -->
+    <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <!-- Employee DAO Bean using Hibernate -->
+    <bean id="employeeDAO" class="com.example.dao.EmployeeDAOImpl">
+        <constructor-arg ref="sessionFactory"/>
+    </bean>
+
+    <!-- Employee Service Bean -->
+    <bean id="employeeService" class="com.example.service.EmployeeServiceImpl">
+        <property name="employeeDAO" ref="employeeDAO"/>
+    </bean>
+
+    <!-- Logging Aspect Bean -->
+    <bean id="loggingAspect" class="com.example.aspect.LoggingAspect"/>
+
+    <!-- AOP Configuration -->
+    <aop:config>
+        <aop:aspect ref="loggingAspect">
+            <!-- Before advice: Log method name before execution -->
+            <aop:before method="logBeforeMethod" pointcut="execution(* com.example.service.EmployeeServiceImpl.*(..))"/>
+            <!-- After advice: Log method name after execution -->
+            <aop:after method="logAfterMethod" pointcut="execution(* com.example.service.EmployeeServiceImpl.*(..))"/>
+            <!-- After-returning advice: Log after method execution -->
+            <aop:after-returning method="logAfterReturning"
+                                 pointcut="execution(* com.example.service.EmployeeServiceImpl.*(..))"
+                                 returning="result"/>
+        </aop:aspect>
+    </aop:config>
+
+</beans>
