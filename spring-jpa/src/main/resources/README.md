@@ -1,4 +1,4 @@
-# Components of appicationContext.xml
+# Components of applicationContext.xml
 
 ## Schema URLs
 

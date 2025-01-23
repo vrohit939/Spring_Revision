@@ -1,10 +1,10 @@
 package com.example.config;
 
 import com.example.aspect.LoggingAspect;
-import com.example.dao.EmployeeDAOImpl;
-import com.example.dao.UserDAOImpl;
-import com.example.service.EmployeeServiceImpl;
-import com.example.service.UserServiceImpl;
+import com.example.xml.dao.EmployeeDAOImpl;
+import com.example.xml.dao.UserDAOImpl;
+import com.example.xml.service.EmployeeServiceImpl;
+import com.example.xml.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
 import org.springframework.jdbc.core.JdbcTemplate;

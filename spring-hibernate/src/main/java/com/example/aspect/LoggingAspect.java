@@ -32,19 +32,19 @@ public class LoggingAspect {
 */
 
     // Before advice: Log method name before execution
-    @Before("execution(* com.example.service.EmployeeServiceImpl.*(..))")
+    @Before("execution(* com.example.xml.service.EmployeeServiceImpl.*(..))")
     public void logBeforeMethod(JoinPoint joinPoint) {
         System.out.println("Before method execution: " + joinPoint.getSignature().getName());
     }
 
     // After advice: Log method name after execution
-    @After("execution(* com.example.service.EmployeeServiceImpl.*(..))")
+    @After("execution(* com.example.xml.service.EmployeeServiceImpl.*(..))")
     public void logAfterMethod(JoinPoint joinPoint) {
         System.out.println("After method execution: " + joinPoint.getSignature().getName());
     }
 
     // After-returning advice: Log method name and result after method execution
-    @AfterReturning(pointcut = "execution(* com.example.service.EmployeeServiceImpl.*(..))", returning = "result")
+    @AfterReturning(pointcut = "execution(* com.example.xml.service.EmployeeServiceImpl.*(..))", returning = "result")
     public void logAfterReturning(JoinPoint joinPoint, Object result) {
         System.out.println("Method executed successfully: " + joinPoint.getSignature().getName());
         System.out.println("Returned value: " + result);

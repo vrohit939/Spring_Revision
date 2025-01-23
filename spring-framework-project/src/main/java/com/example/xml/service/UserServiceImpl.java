@@ -1,7 +1,7 @@
-package com.example.service;
+package com.example.xml.service;
 
-import com.example.dao.UserDAOImpl;
-import com.example.model.User;
+import com.example.xml.dao.UserDAOImpl;
+import com.example.xml.model.User;
 
 import java.util.List;
 

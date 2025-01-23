@@ -38,7 +38,7 @@
         <property name="hibernate.ejb.naming_strategy">org.hibernate.cfg.ImprovedNamingStrategy</property>
 
         <!-- Mention annotated entity classes -->
-        <mapping class="com.example.model.Employee"/>
+        <mapping class="com.example.xml.model.Employee"/>
     </session-factory>
 
 </hibernate-configuration>

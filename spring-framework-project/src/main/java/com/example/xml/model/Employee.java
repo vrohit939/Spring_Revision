@@ -1,4 +1,4 @@
-package com.example.model;
+package com.example.xml.model;
 
 public class Employee {
     private int id;

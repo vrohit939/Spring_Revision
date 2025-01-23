@@ -35,7 +35,7 @@
     <!-- Hibernate SessionFactory Bean -->
     <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="packagesToScan" value="com.example.model"/>
+        <property name="packagesToScan" value="com.example.xml.model"/>
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</prop>
@@ -52,12 +52,12 @@
     </bean>
 
     <!-- Employee DAO Bean using Hibernate -->
-    <bean id="employeeDAO" class="com.example.dao.EmployeeDAOImpl">
+    <bean id="employeeDAO" class="com.example.xml.dao.EmployeeDAOImpl">
         <constructor-arg ref="sessionFactory"/>
     </bean>
 
     <!-- Employee Service Bean -->
-    <bean id="employeeService" class="com.example.service.EmployeeServiceImpl">
+    <bean id="employeeService" class="com.example.xml.service.EmployeeServiceImpl">
         <property name="employeeDAO" ref="employeeDAO"/>
     </bean>
 
@@ -68,12 +68,12 @@
     <aop:config>
         <aop:aspect ref="loggingAspect">
             <!-- Before advice: Log method name before execution -->
-            <aop:before method="logBeforeMethod" pointcut="execution(* com.example.service.EmployeeServiceImpl.*(..))"/>
+            <aop:before method="logBeforeMethod" pointcut="execution(* com.example.xml.service.EmployeeServiceImpl.*(..))"/>
             <!-- After advice: Log method name after execution -->
-            <aop:after method="logAfterMethod" pointcut="execution(* com.example.service.EmployeeServiceImpl.*(..))"/>
+            <aop:after method="logAfterMethod" pointcut="execution(* com.example.xml.service.EmployeeServiceImpl.*(..))"/>
             <!-- After-returning advice: Log after method execution -->
             <aop:after-returning method="logAfterReturning"
-                                 pointcut="execution(* com.example.service.EmployeeServiceImpl.*(..))"
+                                 pointcut="execution(* com.example.xml.service.EmployeeServiceImpl.*(..))"
                                  returning="result"/>
         </aop:aspect>
     </aop:config>

@@ -1,6 +1,6 @@
-package com.example.dao;
+package com.example.annotation.dao;
 
-import com.example.model.Employee;
+import com.example.annotation.model.Employees;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ public class EmployeeDAO {
         this.entityManagerFactory = entityManagerFactory;
     }
 
-    public void saveEmployee(Employee employee) {
+    public void saveEmployee(Employees employee) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();
         entityManager.persist(employee);
@@ -26,16 +26,16 @@ public class EmployeeDAO {
         entityManager.close();
     }
 
-    public Employee getEmployeeById(int id) {
+    public Employees getEmployeeById(int id) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        Employee employee = entityManager.find(Employee.class, id);
+        Employees employee = entityManager.find(Employees.class, id);
         entityManager.close();
         return employee;
     }
 
-    public List<Employee> getAllEmployees() {
+    public List<Employees> getAllEmployees() {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        List<Employee> employees = entityManager.createQuery("FROM Employee", Employee.class).getResultList();
+        List<Employees> employees = entityManager.createQuery("FROM Employees", Employees.class).getResultList();
         entityManager.close();
         return employees;
     }
@@ -43,7 +43,7 @@ public class EmployeeDAO {
     public void updateEmployeeSalary(int id, double salary) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();
-        Employee employee = entityManager.find(Employee.class, id);
+        Employees employee = entityManager.find(Employees.class, id);
         if (employee != null) {
             employee.setSalary(salary);
             entityManager.merge(employee);
@@ -55,7 +55,7 @@ public class EmployeeDAO {
     public void deleteEmployeeById(int id) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();
-        Employee employee = entityManager.find(Employee.class, id);
+        Employees employee = entityManager.find(Employees.class, id);
         if (employee != null) {
             entityManager.remove(employee);
         }

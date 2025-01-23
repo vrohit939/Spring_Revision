@@ -1,6 +1,6 @@
-package com.example.dao;
+package com.example.xml.dao;
 
-import com.example.model.User;
+import com.example.xml.model.User;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 

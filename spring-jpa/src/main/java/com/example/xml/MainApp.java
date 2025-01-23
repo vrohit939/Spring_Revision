@@ -1,7 +1,7 @@
-package com.example;
+package com.example.xml;
 
-import com.example.model.Employee;
-import com.example.service.EmployeeService;
+import com.example.xml.model.Employee;
+import com.example.xml.service.EmployeeService;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.List;
@@ -12,29 +12,29 @@ public class MainApp {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
         EmployeeService employeeService = context.getBean(EmployeeService.class);
 
-        // Create and Save Employee
+        // Create and Save Employees
         Employee emp = new Employee();
         emp.setName("John Doe");
         emp.setDepartment("IT");
         emp.setSalary(50000);
         employeeService.saveEmployee(emp);
-        System.out.println("Employee Saved!");
+        System.out.println("Employees Saved!");
 
-        // Retrieve Employee
+        // Retrieve Employees
         Employee retrievedEmp = employeeService.getEmployeeById(emp.getId());
-        System.out.println("Retrieved Employee: " + retrievedEmp.getName());
+        System.out.println("Retrieved Employees: " + retrievedEmp.getName());
 
-        // Update Employee Salary
+        // Update Employees Salary
         employeeService.updateEmployeeSalary(emp.getId(), 60000);
         System.out.println("Updated Salary!");
 
         // Get All Employees
         List<Employee> employees = employeeService.getAllEmployees();
-        employees.forEach(e -> System.out.println("Employee: " + e.getName()));
+        employees.forEach(e -> System.out.println("Employees: " + e.getName()));
 
-        // Delete Employee
+        // Delete Employees
         employeeService.deleteEmployeeById(emp.getId());
-        System.out.println("Employee Deleted!");
+        System.out.println("Employees Deleted!");
 
         context.close();
 

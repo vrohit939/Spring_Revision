@@ -1,9 +1,9 @@
-package com.example.model;
+package com.example.annotation.model;
 
 import jakarta.persistence.*;
 
 @Entity
-public class Employee {
+public class Employees {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -52,7 +52,7 @@ public class Employee {
     }
 
     public void showInfo() {
-        System.out.println("Employee Name: " + name + ", Employee ID: " + id);
+        System.out.println("Employees Name: " + name + ", Employees ID: " + id);
     }
 }
 

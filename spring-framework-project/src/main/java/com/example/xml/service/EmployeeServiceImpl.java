@@ -1,7 +1,7 @@
-package com.example.service;
+package com.example.xml.service;
 
-import com.example.dao.EmployeeDAO;
-import com.example.model.Employee;
+import com.example.xml.dao.EmployeeDAO;
+import com.example.xml.model.Employee;
 
 import java.util.List;
 

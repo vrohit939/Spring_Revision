@@ -46,7 +46,7 @@ public class AppConfig {
     public LocalSessionFactoryBean sessionFactory(DataSource dataSource) {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource);
-        sessionFactory.setPackagesToScan("com.example.model"); // Point to your entity package
+        sessionFactory.setPackagesToScan("com.example.xml.model"); // Point to your entity package
         return sessionFactory;
     }
 

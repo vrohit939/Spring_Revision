@@ -30,21 +30,21 @@
     </bean>
 
     <!-- DAO and Service Beans -->
-    <bean id="employeeDAO" class="com.example.dao.EmployeeDAOImpl">
+    <bean id="employeeDAO" class="com.example.xml.dao.EmployeeDAOImpl">
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
     </bean>
 
-    <bean id="employeeService" class="com.example.service.EmployeeServiceImpl">
+    <bean id="employeeService" class="com.example.xml.service.EmployeeServiceImpl">
         <property name="employeeDAO" ref="employeeDAO"/>
     </bean>
 
     <!-- UserDAO Bean -->
-    <bean id="userDAO" class="com.example.dao.UserDAOImpl">
+    <bean id="userDAO" class="com.example.xml.dao.UserDAOImpl">
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
     </bean>
 
     <!-- Optional Service Bean -->
-    <bean id="userService" class="com.example.service.UserServiceImpl">
+    <bean id="userService" class="com.example.xml.service.UserServiceImpl">
         <property name="userDAO" ref="userDAO"/>
     </bean>
 
@@ -56,13 +56,13 @@
         <!-- Define an aspect for logging -->
         <aop:aspect ref="loggingAspect">
             <!-- Before advice: Executes before methods in EmployeeService -->
-            <aop:before method="logBeforeMethod" pointcut="execution(* com.example.service.EmployeeServiceImpl.*(..))"/>
+            <aop:before method="logBeforeMethod" pointcut="execution(* com.example.xml.service.EmployeeServiceImpl.*(..))"/>
 
             <!-- After advice: Executes after methods in EmployeeService -->
-            <aop:after method="logAfterMethod" pointcut="execution(* com.example.service.EmployeeServiceImpl.*(..))"/>
+            <aop:after method="logAfterMethod" pointcut="execution(* com.example.xml.service.EmployeeServiceImpl.*(..))"/>
 
             <!-- After-returning advice: Executes after methods return -->
-            <aop:after-returning method="logAfterReturning" pointcut="execution(* com.example.service.EmployeeServiceImpl.*(..))" returning="result"/>
+            <aop:after-returning method="logAfterReturning" pointcut="execution(* com.example.xml.service.EmployeeServiceImpl.*(..))" returning="result"/>
         </aop:aspect>
     </aop:config>
 

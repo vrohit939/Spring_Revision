@@ -1,8 +1,8 @@
 package com.example;
 
 import com.example.config.AppConfig;
-import com.example.model.Employee;
-import com.example.service.EmployeeServiceImpl;
+import com.example.xml.model.Employee;
+import com.example.xml.service.EmployeeServiceImpl;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 

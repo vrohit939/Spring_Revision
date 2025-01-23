@@ -1,7 +1,7 @@
-package com.example.service;
+package com.example.xml.service;
 
-import com.example.dao.EmployeeDAO;
-import com.example.model.Employee;
+import com.example.xml.dao.EmployeeDAO;
+import com.example.xml.model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
