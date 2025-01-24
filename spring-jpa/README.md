@@ -68,3 +68,5 @@ These annotations allow developers to easily define how entities are mapped to d
 - **Object-Oriented:** JPA lets you work with objects, rather than tables and columns.
 - **Portability:** Since JPA is a standard, your code can be used with any JPA-compliant provider (e.g., Hibernate, EclipseLink, OpenJPA).
 - **Transaction Management:** JPA integrates well with Spring's transaction management to ensure consistent data.
+
+----

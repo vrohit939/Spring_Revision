@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import java.util.Properties;
 
 @Configuration
-@ComponentScan(basePackages = "com.example.annotation") // Replaces <context:component-scan>
+@ComponentScan(basePackages = {"com.example.annotation", "com.example.relationship.onetoone"}) // Replaces <context:component-scan>
 @EnableTransactionManagement // Replaces <tx:annotation-driven>
 public class AppConfig {
 

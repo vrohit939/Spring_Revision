@@ -3,6 +3,7 @@ package com.example.annotation.dao;
 import com.example.annotation.model.Employees;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -38,6 +39,13 @@ public class EmployeeDAO {
         List<Employees> employees = entityManager.createQuery("FROM Employees", Employees.class).getResultList();
         entityManager.close();
         return employees;
+    }
+
+    public List<Employees> getEmployeeBySalary(double salary) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        TypedQuery<Employees> query = entityManager.createQuery("SELECT e FROM User e WHERE e.salary > :salary", Employees.class);
+        query.setParameter("salary", salary);
+        return query.getResultList();
     }
 
     public void updateEmployeeSalary(int id, double salary) {
