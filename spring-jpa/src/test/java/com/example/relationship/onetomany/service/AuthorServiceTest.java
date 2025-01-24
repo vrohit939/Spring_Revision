@@ -1,9 +1,8 @@
-package com.example.relationship.onetoone.service;
+package com.example.relationship.onetomany.service;
 
 import com.example.annotation.config.AppConfig;
 import com.example.relationship.onetomany.model.Author;
 import com.example.relationship.onetomany.model.Book;
-import com.example.relationship.onetomany.service.AuthorService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
