@@ -48,3 +48,20 @@ Cascade operations in JPA/Hibernate are used to propagate certain operations (li
       the inverse side of the relationship and the relationship is maintained by the passport field in the Employee
       class. Since Employee owns the relationship, Passport doesn't need a foreign key column. The relationship is
       already defined in Employee.
+
+3. One-To-Many and Many-To-One
+   - In JPA/Hibernate, OneToMany and ManyToOne define a parent-child (one-to-many) relationship between two entities.
+   - @OneToMany (Parent → Children): One parent entity is related to multiple child entities. Example: One Author has many Books.
+   - @ManyToOne (Children → Parent): Multiple child entities belong to one parent entity. Example: Many Books belong to one Author.
+   - You define a bidirectional relationship with @OneToMany on the parent side and @ManyToOne on the child side.
+   - The mappedBy attribute tells Hibernate that the relationship is already mapped by the author field in the Book entity.
+     It prevents Hibernate from creating an extra join table (author_books).
+     ✔ Without mappedBy, Hibernate creates an extra join table for the relationship.
+     ✔ With mappedBy, the foreign key is stored in the Book table.
+   - Best practices for OneToMany and ManyToOne:
+     ✅ Always set the relationship on both sides (in both Author and Book).
+     ✅ Use mappedBy to avoid unnecessary join tables.
+     ✅ Use orphanRemoval=true carefully, as it automatically deletes orphaned child records.
+     ✅ Avoid EAGER fetching on OneToMany (can cause performance issues).
+     ✅ Use @Transactional when modifying relationships to avoid lazy loading issues.
+   
